@@ -9,15 +9,14 @@ import productsCommonServices from '@/services/products/common.products.services
 
 // ------------------ init router --------------
 
-const router = express.Router()
+const router = express.Router();
 
 
 // jobs/tracking/:shortId
 router.route('/')
   .get(
-  (req, res, next) => handler(getValidator, req, res, next, validations['mainGet']),
-  (req, res, next) => responses(productsCommonServices.find, req, res, next))
-
+    (req, res, next) => handler(getValidator, req, res, next, validations['mainGet']),
+    (req, res, next) => responses(productsCommonServices.find, req, res, next));
 
 // export
-module.exports = router
+module.exports = router;

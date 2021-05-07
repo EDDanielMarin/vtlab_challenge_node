@@ -10,7 +10,7 @@ import deliveriesCommonServices from '@/services/deliveries/common.deliveries.se
 
 // ------------------ init router --------------
 
-const router = express.Router()
+const router = express.Router();
 
 // ------------------ endpoints ----------------
 
@@ -22,13 +22,18 @@ router.route('/')
     (req, res, next) => responses(deliveriesCommonServices.find, req, res, next))
   .post(
     (req, res, next) => handler(validator, req, res, next, validations['mainPost']),
-    (req, res, next) => responses(deliveriesCommonServices.create, req, res, next))
+    (req, res, next) => responses(deliveriesCommonServices.create, req, res, next));
 
 router.route('/:id')
   .get(
     (req, res, next) => handler(getValidator, req, res, next, validations['getOne']),
-    (req, res, next) => responses(deliveriesCommonServices.findOne, req, res, next))
+    (req, res, next) => responses(deliveriesCommonServices.findOne, req, res, next));
 
+router.route('/filter/params')
+  .get(
+    (req, res, next) => handler(getValidator, req, res, next, validations['filterParams']),
+    (req, res, next) => responses(deliveriesCommonServices.filterParams, req, res, next)
+  );
 
 // export
-module.exports = router
+module.exports = router;
